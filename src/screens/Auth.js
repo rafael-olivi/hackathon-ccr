@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import AuthInput from '../components/AuthInput'
 
 const initialState = {
     name: '',
@@ -26,15 +27,15 @@ export default class Auth extends Component {
                 </Text>
 
                 {this.state.stageNew && 
-                    <TextInput style={styles.input} placeholder='Nome'
+                    <AuthInput icon='user' style={styles.input} placeholder='Nome'
                         value={this.state.name} onChangeText={name => this.setState({ name })}/> 
                 }
-                <TextInput style={styles.input} placeholder='E-mail'
+                <AuthInput icon='at' style={styles.input} placeholder='E-mail'
                     value={this.state.email} onChangeText={email => this.setState({ email })}/>
-                <TextInput style={styles.input} placeholder='Senha'
+                <AuthInput icon='lock' style={styles.input} placeholder='Senha'
                     value={this.state.password} onChangeText={password => this.setState({ password })}/>
                 {this.state.stageNew && 
-                    <TextInput style={styles.input} placeholder='Confirma password'
+                    <AuthInput icon='asterisk' style={styles.input} placeholder='Confirma Senha'
                         value={this.state.confirmPassword} onChangeText={confirmPassword => this.setState({ confirmPassword })}/> 
                 }
 

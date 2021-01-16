@@ -1888,6 +1888,11 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-picker/picker@^1.9.10":
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.10.tgz#c0d445453e91077cc85a3f0a6d0074d44d21e438"
+  integrity sha512-g0C0RLjXXGE4UfmGxNtAOY3LE5Epz8+ck/rB1oErJowskIIG83U6LVqH9oFrx1Hq1k/lbVQGgabURlE0QQ1MHA==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.2.tgz#858f5c4b48d80778fde4b9d541f27edc0d56488b"

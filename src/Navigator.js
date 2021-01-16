@@ -19,10 +19,10 @@ const menuConfig = {
 }
 
 const DrawerNavigator = props => {
-    // const { email, name } = props.route.params
+    const {name, email } = props.route.params
     return (
         <Drawer.Navigator drawerContentOptions={menuConfig} initialRouteName="Home"
-            drawerContent={(props) => <Menu {...props} email='rbolivi@gmail.com' name='Rafael' />} >
+            drawerContent={(props) => <Menu {...props} email={email} name={name} />} >
             <Drawer.Screen name="Home" options={{ title: 'Principal' }} component={Home} />
             <Drawer.Screen name="Tela 2" component={Tela2} />
             {/* <Drawer.Screen name="Tomorrow" options={{ title: 'Amanhã' }}>

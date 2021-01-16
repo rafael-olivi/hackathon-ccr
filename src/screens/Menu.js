@@ -24,7 +24,7 @@ export default props => {
     return(
         <DrawerContentScrollView>
             <View style={styles.header}>
-            <Text style={styles.title}>Tasks</Text>
+            <Text style={styles.title}>Hackathon</Text>
                 <Gravatar style={styles.avatar}
                     options={{
                         email: props.email,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 20,
-        color: 'blue',
+        color: '#222',
         marginBottom: 5,
     },
     email: {
         fontSize: 15,
-        color: 'red',
+        color: '#555',
         marginBottom: 10,
     },
     logoutIcon: {

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     title: {
         color: '#000',
         fontSize: 30,
-        paddingTop: Platform.OS === 'ios' ? 70 : 30,
+        paddingTop: 30,
         padding: 10
     },
     avatar: {

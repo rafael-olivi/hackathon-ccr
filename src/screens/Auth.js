@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import AuthInput from '../components/AuthInput'
 
+import { CommonActions } from '@react-navigation/native'
+
 const initialState = {
     name: '',
     email: '',
@@ -15,6 +17,10 @@ export default class Auth extends Component {
 
     state = {
         ...initialState
+    }
+
+    signin = () => {
+        this.props.navigation.navigate('Home')
     }
 
     render() {
@@ -44,14 +50,16 @@ export default class Auth extends Component {
                         value={this.state.confirmPassword} onChangeText={confirmPassword => this.setState({ confirmPassword })}/> 
                 }
 
-                
-                <TouchableOpacity>
+                {/* Botão Login */}
+                <TouchableOpacity onPress={() => this.signin()}>
                     <View style={styles.button}>
                         <Text>
                             {this.state.stageNew ? 'Registrar' : 'Entrar'}
                         </Text>
                     </View>
                 </TouchableOpacity>
+
+                {/* Opção para se registar */}
                 <TouchableOpacity  onPress={() => this.setState({ stageNew: !this.state.stageNew })}>
                     <View >
                         <Text style={styles.buttonText}>

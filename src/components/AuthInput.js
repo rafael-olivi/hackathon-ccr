@@ -1,14 +1,28 @@
 import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import {Picker} from '@react-native-picker/picker';
 
 export default props => {
-    return (
-        <View style={[styles.container, props.style]}>
-            <Icon name={props.icon} size={20} style={styles.icon} />
-            <TextInput {...props} style={styles.input} />
-        </View>
-    )
+
+    if (props.selectInput) {
+        return (
+            <View style={[styles.container, props.style]}>
+                <Icon name={props.icon} size={20} style={styles.icon} />
+                <Picker {...props} style={styles.selectInput} > 
+                    <Picker.Item label="Pessoa Fisica" value="PF" />
+                    <Picker.Item label="Pessoa Juridica" value="PJ" />
+                </Picker>
+            </View>
+        )
+    } else {
+        return (
+            <View style={[styles.container, props.style]}>
+                <Icon name={props.icon} size={20} style={styles.icon} />
+                <TextInput {...props} style={styles.input} />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -27,5 +41,14 @@ const styles = StyleSheet.create({
     input: {
         marginLeft: 20,
         width: '70%'
+    },
+    selectInput: {
+        width: '100%',
+        height: 40,
+        marginLeft: 20,
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: 'white',
+        alignItems: 'center'
     }
 })

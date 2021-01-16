@@ -7,6 +7,7 @@ const initialState = {
     email: '',
     password: '',
     confirmPassword: '',
+    userType: '',
     stageNew: false
 }
 
@@ -29,6 +30,10 @@ export default class Auth extends Component {
                 {this.state.stageNew && 
                     <AuthInput icon='user' style={styles.input} placeholder='Nome'
                         value={this.state.name} onChangeText={name => this.setState({ name })}/> 
+                }
+                {this.state.stageNew && 
+                    <AuthInput selectInput={true} selectedValue={this.state.userType} onValueChange={ userType => this.setState({ userType })}
+                        icon='user' style={styles.input} placeholder='Tipo de usuario' /> 
                 }
                 <AuthInput icon='at' style={styles.input} placeholder='E-mail'
                     value={this.state.email} onChangeText={email => this.setState({ email })}/>

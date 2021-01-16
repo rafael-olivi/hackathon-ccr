@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 40,
         marginLeft: 20,
+        borderRadius: 20,
         flexDirection: 'row',
-        borderWidth: 1,
         borderColor: 'white',
         alignItems: 'center'
     }

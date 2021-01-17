@@ -73,7 +73,8 @@ export default class Home extends Component {
             }
              
             this.state.cursos = this.state.temp.filter(function(item){
-                return item.title.includes(search)
+                return item.title.toLowerCase().includes(search.toLowerCase()) 
+                    || item.company.toLowerCase().includes(search.toLowerCase())
               })
         })
     }

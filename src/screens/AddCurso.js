@@ -124,7 +124,7 @@ export default class AddCurso extends Component {
                 </View>
                 <View style={styles.header}>
                     <Text style={styles.title}>Meus Cursos</Text>
-                    <Button onPress={() => {this.setState({modalVisible: true})}}
+                    <Button buttonStyle={{marginTop: 10}} onPress={() => {this.setState({modalVisible: true})}}
                         icon={<Icon style={styles.icon} name='plus'
                             size={20} color={'blue'} />}
                         title={'Adicionar novo curso'} />

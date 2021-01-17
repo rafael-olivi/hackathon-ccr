@@ -4,9 +4,21 @@ import { Gravatar } from 'react-native-gravatar'
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { useFonts, Montserrat_300Light, Montserrat_500Medium, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
+import AppLoading from 'expo-app-loading';
 
 
 export default props => {
+
+    let [fontsLoaded] = useFonts({
+        Montserrat_300Light,
+        Montserrat_600SemiBold,
+        Montserrat_500Medium
+    });
+    
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    }
 
     const logout = () => {
         props.navigation.dispatch(
@@ -24,7 +36,7 @@ export default props => {
     return(
         <DrawerContentScrollView style={{backgroundColor: '#C4C4C4'}}>
             <View style={styles.header}>
-                <Text style={styles.title}>Hackathon</Text>
+                <Text style={styles.title}>Trilhaê</Text>
                 <Gravatar style={styles.avatar}
                     options={{
                         email: props.email,
@@ -58,7 +70,8 @@ const styles = StyleSheet.create({
     title: {
         color: '#000',
         fontSize: 30,
-        padding: 10
+        padding: 10,
+        fontFamily: 'Montserrat_600SemiBold',
     },
     avatar: {
         width: 60,
@@ -70,16 +83,19 @@ const styles = StyleSheet.create({
     },
     userInfo: {
         marginLeft: 10,
+        fontFamily: 'Montserrat_500Medium',
     },
     name: {
         fontSize: 20,
         color: '#222',
         marginBottom: 5,
+        fontFamily: 'Montserrat_500Medium',
     },
     email: {
         fontSize: 15,
         color: 'black',
         marginBottom: 10,
+        fontFamily: 'Montserrat_500Medium',
     },
     logoutIcon: {
         marginLeft: 10,

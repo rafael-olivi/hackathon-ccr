@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, FlatList, StyleSheet, Text, View } from 'react-native'
+import { SearchBar } from 'react-native-elements'
 import Curso from '../components/Curso'
 
 const mockCursos = [
@@ -43,7 +44,9 @@ const mockCursos = [
 export default class Home extends Component {
 
     state = {
-        cursos: mockCursos
+        cursos: mockCursos,
+        temp: mockCursos,
+        search: null
     }
 
     onRegister = (id) => {
@@ -53,13 +56,35 @@ export default class Home extends Component {
         this.setState( {cursos: newArray} )
     }
 
+    renderHeader = () => {
+        return <SearchBar placeholder="Busque aqui..."
+        lightTheme round editable={true}
+        value={this.state.search}
+        onChangeText={this.updateSearch} />; 
+    }
+
+    updateSearch = search => {
+        this.setState({ search }, () => {
+            if ('' == search) {
+                this.setState({
+                    cursos: [...this.state.temp]
+                });
+                return;
+            }
+             
+            this.state.cursos = this.state.temp.filter(function(item){
+                return item.title.includes(search)
+              })
+        })
+    }
 
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.header}></View>
+                {/* <View style={styles.header}></View> */}
                 <View style={styles.body}>
-                    <FlatList data={this.state.cursos}
+                    <FlatList ListHeaderComponent={this.renderHeader} 
+                        data={this.state.cursos}
                         keyExtractor={item => `${item.id}`} 
                         renderItem={({item, index}) => <Curso {...item} onPress={() => this.onRegister(item.id)} />} />
                 </View>
@@ -70,13 +95,17 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     header: {
-        flex: 2,
+        flex: 1,
     },
     body: {
-        flex: 8,
-        margin: 10,
+        flex: 1,
+        marginTop: 30
+    },
+    searchBarContainer: {
+        backgroundColor: 'white',
+        borderWidth: 0
     }
 })

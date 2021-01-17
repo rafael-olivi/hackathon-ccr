@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 5,
         marginBottom: 10,
+        margin: 10
     },
     title: {
         width: '100%',

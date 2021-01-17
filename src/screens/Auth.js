@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import AuthInput from '../components/AuthInput'
 
 import { CommonActions } from '@react-navigation/native'
@@ -18,7 +18,7 @@ const initialState = {
 }
 
 const mockUsers = [
-    {name: 'Rafael', email: 'rbolivi@gmail.com', password: 'admin'}
+    {name: 'Barreta', email: 'teste@gmail.com', password: 'admin'}
 ]
 
 export default class Auth extends Component {
@@ -97,9 +97,7 @@ export default class Auth extends Component {
     render() {
         return (
             <View style={styles.background}>
-                <Text style={styles.title}>
-                    HACKATHON CCR
-                </Text>
+                <Image style={styles.logo} resizeMode='contain' source={require('../../assets/logo/trilhae_logo.png')} />
                 <Text style={styles.subtitle}>
                     {this.state.stageNew ? 'Crie a sua conta' : 'Informe seus dados'}
                 </Text>
@@ -130,7 +128,7 @@ export default class Auth extends Component {
                 {/* Botão Login */}
                 <TouchableOpacity onPress={this.signinOrSignup}>
                     <View style={styles.button}>
-                        <Text>
+                        <Text style={styles.buttonText}>
                             {this.state.stageNew ? 'Registrar' : 'Entrar'}
                         </Text>
                     </View>
@@ -139,7 +137,7 @@ export default class Auth extends Component {
                 {/* Opção para se registar */}
                 <TouchableOpacity  onPress={() => this.setState({ stageNew: !this.state.stageNew })}>
                     <View >
-                        <Text style={styles.buttonText}>
+                        <Text style={[styles.buttonText, {marginTop: 10}]}>
                             {this.state.stageNew ? 'Já possui conta?' : 'Ainda não possui conta?'}
                         </Text>
                     </View>
@@ -154,7 +152,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'black'
+        backgroundColor: '#3733A6'
+    },
+    logo: {
+        alignSelf: 'stretch',
+        width: 300,
+        height: 100,
+        marginLeft: 35
     },
     title: {
         color: 'white',
@@ -170,13 +174,12 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     button: {
-        backgroundColor: 'white',
+        backgroundColor: '#FF5757',
         marginTop: 10,
         borderRadius: 7,
         padding: 10,
     },
     buttonText: {
-        marginTop: 10,
-        color: 'blue',
+        color: 'white'
     }
 })

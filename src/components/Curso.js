@@ -53,8 +53,8 @@ export default props => {
 
             {!props.edit &&
                 <Button onPress={() => props.onPress()}
-                icon={<Icon style={styles.icon} name={props.registered ? 'check' : 'times'}
-                    size={20} color={props.registered ? 'green' : 'darkred'} />}
+                icon={<Icon style={styles.icon} name={props.registered ? 'times' : 'check'}
+                    size={20} color={props.registered ? 'darkred' : 'green'} />}
                 buttonStyle={styles.button}
                 title={props.registered ? 'Desinscreva-se' : 'Inscreva-se'} />
             }

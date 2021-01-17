@@ -50,12 +50,13 @@ export default class Home extends Component {
         search: null
     }
 
-    onRegister = (id) => {
+    onRegisterOrUnregister = (id) => {
         const cursoIndex = this.state.cursos.findIndex(element => element.id == id)
         let newArray = [...this.state.cursos]
-        newArray[cursoIndex] = {...newArray[cursoIndex], registered: !newArray[cursoIndex].registered}
+        let registerStatus = !newArray[cursoIndex].registered
+        newArray[cursoIndex] = {...newArray[cursoIndex], registered: registerStatus}
         this.setState( {cursos: newArray} )
-        showSuccess('Inscrição realizada!')
+        showSuccess(registerStatus ? "Inscrição realizada!" : "Desinscrito com sucesso")
     }
 
     renderHeader = () => {
@@ -89,7 +90,7 @@ export default class Home extends Component {
                     <FlatList ListHeaderComponent={this.renderHeader} 
                         data={this.state.cursos}
                         keyExtractor={item => `${item.id}`} 
-                        renderItem={({item, index}) => <Curso {...item} onPress={() => this.onRegister(item.id)} />} />
+                        renderItem={({item, index}) => <Curso {...item} onPress={() => this.onRegisterOrUnregister(item.id)} />} />
                 </View>
             </View>
         )

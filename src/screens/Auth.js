@@ -4,9 +4,13 @@ import AuthInput from '../components/AuthInput'
 
 import { CommonActions } from '@react-navigation/native'
 
+import { server, showError, showSuccess } from "../common";
+import axios from 'axios';
+
 const initialState = {
     name: '',
     email: '',
+    telefone: '',
     password: '',
     confirmPassword: '',
     userType: '',
@@ -23,6 +27,14 @@ export default class Auth extends Component {
         ...initialState
     }
 
+    signinOrSignup = () => {
+        if (this.state.stageNew) {
+            this.signup()
+        } else {
+            this.signin()
+        }
+    }
+
     signin = () => {
         let login = false;
         let res = null ;
@@ -32,8 +44,6 @@ export default class Auth extends Component {
                 res = {name: user.name, email: user.email}
             }
         })
-
-        
 
         if(login) {
             // this.props.navigation.navigate('Home')
@@ -52,6 +62,36 @@ export default class Auth extends Component {
             Alert.alert('Usuário inválido.')
         }
         
+    }
+
+    signup = async () => {
+        try {
+            if(this.state.userType === 'pf') {
+                await axios.post(`${server}/Usuario/Cadastrar`, {
+                    nome: this.state.name,
+                    email: this.state.email,
+                    telefone: this.state.telefone,
+                    renda: 1,
+                    password: this.state.password,
+                })
+            } else {
+                await axios.post(`${server}/Empresa/Cadastrar`, {
+                    nome: this.state.name,
+                    email: this.state.email,
+                    telefone: this.state.telefone,
+                    renda: 1,
+                    password: this.state.password,
+                })
+
+            }
+
+            showSuccess('Cadstro Concluído!')
+            this.setState({ stageNew: false })
+
+        } catch(e) {
+            console.log(e)
+            showError(e)
+        }
     }
 
     render() {
@@ -74,15 +114,21 @@ export default class Auth extends Component {
                 }
                 <AuthInput icon='at' style={styles.input} placeholder='E-mail'
                     value={this.state.email} onChangeText={email => this.setState({ email })}/>
+
+                {this.state.stageNew &&
+                    <AuthInput icon='phone' style={styles.input} placeholder='Telefone' keyboardType = 'numeric'
+                        value={this.state.telefone} onChangeText={telefone => this.setState({ telefone })} />
+                }
                 <AuthInput icon='lock' style={styles.input} placeholder='Senha' secureTextEntry={true}
                     value={this.state.password} onChangeText={password => this.setState({ password })}/>
+
                 {this.state.stageNew && 
                     <AuthInput icon='asterisk' style={styles.input} placeholder='Confirma Senha' secureTextEntry={true}
                         value={this.state.confirmPassword} onChangeText={confirmPassword => this.setState({ confirmPassword })}/> 
                 }
 
                 {/* Botão Login */}
-                <TouchableOpacity onPress={() => this.signin()}>
+                <TouchableOpacity onPress={this.signinOrSignup}>
                     <View style={styles.button}>
                         <Text>
                             {this.state.stageNew ? 'Registrar' : 'Entrar'}

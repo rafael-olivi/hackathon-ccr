@@ -86,7 +86,7 @@ export default class Auth extends Component {
             }
 
             showSuccess('Cadstro Concluído!')
-            this.setState({ stageNew: false })
+            this.setState({ ...initialState })
 
         } catch(e) {
             console.log(e)

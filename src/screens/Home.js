@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, FlatList, StyleSheet, Text, View } from 'react-native'
 import { SearchBar } from 'react-native-elements'
+import { showSuccess } from '../common'
 import Curso from '../components/Curso'
 
 const mockCursos = [
@@ -54,6 +55,7 @@ export default class Home extends Component {
         let newArray = [...this.state.cursos]
         newArray[cursoIndex] = {...newArray[cursoIndex], registered: !newArray[cursoIndex].registered}
         this.setState( {cursos: newArray} )
+        showSuccess('Inscrição realizada!')
     }
 
     renderHeader = () => {

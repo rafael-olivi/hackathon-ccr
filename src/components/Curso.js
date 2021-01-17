@@ -51,11 +51,21 @@ export default props => {
                     <Text style={styles.textDesc}>{props.desc}</Text>
             </ReadMore>
 
-            <Button onPress={() => props.onPress()}
+            {!props.edit &&
+                <Button onPress={() => props.onPress()}
                 icon={<Icon style={styles.icon} name={props.registered ? 'check' : 'times'}
                     size={20} color={props.registered ? 'green' : 'darkred'} />}
                 buttonStyle={styles.button}
                 title={props.registered ? 'Desinscreva-se' : 'Inscreva-se'} />
+            }
+
+            {props.edit &&
+                <Button onPress={() => props.onPress()}
+                icon={<Icon style={styles.icon} name={'trash'}
+                    size={20} color={'red'} />}
+                buttonStyle={styles.button}
+                title={'remover'} />
+            }
         </Card>
     )
 }

@@ -23,7 +23,7 @@ const DrawerNavigator = props => {
     return (
         <Drawer.Navigator drawerContentOptions={menuConfig} initialRouteName="Home"
             drawerContent={(props) => <Menu {...props} email={email} name={name} />} >
-            <Drawer.Screen name="Home" options={{ title: 'Principal' }} component={Home} />
+            <Drawer.Screen name="Home" options={{ title: 'Cursos' }} component={Home} />
             <Drawer.Screen name="Tela 2" component={Tela2} />
             {/* <Drawer.Screen name="Tomorrow" options={{ title: 'Amanhã' }}>
                 {props => <TaskList {...props} title='Amanhã' daysAhead={1} />}

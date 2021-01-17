@@ -22,9 +22,9 @@ export default props => {
     }
 
     return(
-        <DrawerContentScrollView>
+        <DrawerContentScrollView style={{backgroundColor: '#C4C4C4'}}>
             <View style={styles.header}>
-            <Text style={styles.title}>Hackathon</Text>
+                <Text style={styles.title}>Hackathon</Text>
                 <Gravatar style={styles.avatar}
                     options={{
                         email: props.email,
@@ -53,13 +53,11 @@ export default props => {
 
 const styles = StyleSheet.create({
     header: {
-        borderBottomWidth: 1,
-        borderColor: '#DDD'
+        backgroundColor: '#625F5F'
     },
     title: {
         color: '#000',
         fontSize: 30,
-        paddingTop: Platform.OS === 'ios' ? 70 : 30,
         padding: 10
     },
     avatar: {
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
     },
     email: {
         fontSize: 15,
-        color: '#555',
+        color: 'black',
         marginBottom: 10,
     },
     logoutIcon: {

@@ -39,11 +39,11 @@ export default class AddCurso extends Component {
         dialogVisible: false,
     }
 
-    setModalVisible = visible => {
+    setModalVisible = (visible) => {
         this.setState({modalVisible: visible})
     }
     
-    setDialogVisible = visible => {
+    setDialogVisible = (visible) => {
         this.setState({dialogVisible: visible})
     }
 
@@ -133,10 +133,10 @@ export default class AddCurso extends Component {
                     <FlatList ListHeaderComponent={this.renderHeader} 
                         data={this.state.cursos}
                         keyExtractor={item => `${item.id}`} 
-                        renderItem={({item, index}) => <Curso {...item} edit={true} onPress={this.handleDelete} />} />
+                        renderItem={({item, index}) => <Curso {...item} edit={true} onPress={this.showDialog} />} />
                 </View>
 
-                <Dialog.Container visible={this.dialogVisible}>
+                <Dialog.Container visible={this.state.dialogVisible}>
                     <Dialog.Title>Deletar Curso</Dialog.Title>
                     <Dialog.Description>
                             Deseja deletar este curso?

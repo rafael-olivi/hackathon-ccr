@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Auth from './screens/Auth';
 import Home from './screens/Home';
-import Tela2 from './screens/Tela2';
+import AddCurso from './screens/AddCurso';
 import Menu from './screens/Menu';
 
 const Drawer = createDrawerNavigator();
@@ -24,7 +24,7 @@ const DrawerNavigator = props => {
         <Drawer.Navigator drawerContentOptions={menuConfig} initialRouteName="Home"
             drawerContent={(props) => <Menu {...props} email={email} name={name} />} >
             <Drawer.Screen name="Home" options={{ title: 'Cursos' }} component={Home} />
-            <Drawer.Screen name="Tela 2" component={Tela2} />
+            <Drawer.Screen name="AddCurso" options={{ title: 'Meus Cursos' }} component={AddCurso} />
             {/* <Drawer.Screen name="Tomorrow" options={{ title: 'Amanhã' }}>
                 {props => <TaskList {...props} title='Amanhã' daysAhead={1} />}
             </Drawer.Screen> */}

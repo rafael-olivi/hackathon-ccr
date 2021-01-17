@@ -4,6 +4,7 @@ import ReadMore from 'react-native-read-more-text'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { useFonts, Montserrat_300Light, Montserrat_500Medium, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
+import { Button, Card } from 'react-native-elements';
 
 export default props => {
 
@@ -38,26 +39,34 @@ export default props => {
     }
 
     return(
-        <View style={styles.container}>
-            <Text style={styles.title}>{props.title}</Text>
-            <Text style={{fontFamily: 'Montserrat_500Medium'}}>Empresa: {props.company}</Text>
+        <Card>
+            <Card.Title>{props.title}</Card.Title>
+            <Card.Divider/>
+            <Text style={styles.textEmpresa}>Empresa: {props.company}</Text>
             
             <ReadMore numberOfLines={2} 
                 renderTruncatedFooter={_renderTruncatedFooter}
                 renderRevealedFooter={_renderRevealedFooter}
                 onReady={_handleTextReady}>
-                    <Text style={{fontFamily: 'Montserrat_300Light'}}>{props.desc}</Text>
+                    <Text style={styles.textDesc}>{props.desc}</Text>
             </ReadMore>
-            
-            <TouchableOpacity onPress={() => props.onPress()}>
-                <View style={styles.button}>
-                    <Icon name={props.registered ? 'check' : 'times'} size={20} color={props.registered ? 'green' : 'darkred'} />
-                    <Text style={styles.buttonText}>
-                        {props.registered ? 'Desinscreva-se' : 'Inscreva-se'}
-                    </Text>
-                </View>
-            </TouchableOpacity>
-        </View>
+
+            {!props.edit &&
+                <Button onPress={() => props.onPress()}
+                icon={<Icon style={styles.icon} name={props.registered ? 'check' : 'times'}
+                    size={20} color={props.registered ? 'green' : 'darkred'} />}
+                buttonStyle={styles.button}
+                title={props.registered ? 'Desinscreva-se' : 'Inscreva-se'} />
+            }
+
+            {props.edit &&
+                <Button onPress={() => props.onPress()}
+                icon={<Icon style={styles.icon} name={'trash'}
+                    size={20} color={'red'} />}
+                buttonStyle={styles.button}
+                title={'remover'} />
+            }
+        </Card>
     )
 }
 
@@ -68,6 +77,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 5,
         marginBottom: 10,
+        margin: 10
     },
     title: {
         width: '100%',
@@ -76,16 +86,20 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         fontFamily: 'Montserrat_600SemiBold'
     },
+    textEmpresa: {
+        fontFamily: 'Montserrat_500Medium',
+    },
+    textDesc: {
+        fontFamily: 'Montserrat_300Light',
+    },
     button: {
-        flexDirection: 'row',
         backgroundColor: '#F25E3D',
         marginTop: 10,
         borderRadius: 7,
         padding: 10,
         marginBottom: 5
     },
-    buttonText: {
-        marginLeft: 5,
-        color: 'white'
+    icon: {
+        marginRight: 5,
     }
 })

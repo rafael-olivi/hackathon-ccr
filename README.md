@@ -1,7 +1,10 @@
-# HACKATHOn CRR
+# TRILHAÊ
 
 ## Instruções para rodar 
-    - Clone o projeto para uma pasta
-    - Certifique-se que está com o Expo instalado, use o comando "expo -V" no terminal
-    - Acesse a pasta do projeto pelo terminal e utilize o comando "expo start"
-    - Após a inicialização, irá ser aberto no navegador a pagina do build e nela terá um QR Code que pode ser lido utilziando o aplicativo da "Expo" no mobile (Baixar na Play Store)
+- Baixe no Play Store o aplicativo chamado "Expo" 
+- Pelo celular, entre nesse link https://drive.google.com/file/d/1mmKR-qSFTKUrSqFuVCwWXy4ozlEHaHur/view?usp=sharing para baixar a versão APK
+- Baixe a versão APK e, pelo Expo faça a instação
+
+## Instruções para logar 
+- Entre com o email: teste@gmail.com
+- entre com a senha: admin
